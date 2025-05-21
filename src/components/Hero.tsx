@@ -1,6 +1,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Mail, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Hero = () => {
   return (
@@ -77,17 +79,25 @@ const Hero = () => {
         
         <div className="lg:col-span-5 flex justify-center lg:justify-end">
           {/* Profile image with decorative elements */}
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
             {/* Glowing background effect */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-tech-blue to-tech-purple rounded-full blur opacity-50"></div>
             
-            {/* Main circle */}
+            {/* Main circle with profile picture */}
             <div className="relative z-10">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-tech-blue/20 bg-card shadow-2xl">
-                {/* Profile picture placeholder */}
-                <div className="w-full h-full bg-secondary flex items-center justify-center text-4xl font-bold bg-gradient-to-br from-card to-secondary">
-                  <span className="bg-gradient-to-r from-tech-blue to-tech-purple text-transparent bg-clip-text">SK</span>
-                </div>
+                {/* Profile picture */}
+                <Avatar className="w-full h-full">
+                  <AvatarImage src="https://i.postimg.cc/4dvSs1sy/image.jpg" alt="Sk Mirjahan Ali" className="object-cover" />
+                  <AvatarFallback className="w-full h-full bg-secondary flex items-center justify-center text-4xl font-bold bg-gradient-to-br from-card to-secondary">
+                    <span className="bg-gradient-to-r from-tech-blue to-tech-purple text-transparent bg-clip-text">SK</span>
+                  </AvatarFallback>
+                </Avatar>
               </div>
             </div>
             
@@ -98,7 +108,7 @@ const Hero = () => {
             <div className="absolute top-0 right-1/4 w-6 h-6 bg-tech-blue/20 rounded-full blur-sm"></div>
             <div className="absolute bottom-1/4 right-0 w-8 h-8 bg-tech-purple/20 rounded-full blur-sm"></div>
             <div className="absolute bottom-0 left-1/4 w-10 h-10 bg-tech-orange/10 rounded-full blur-sm"></div>
-          </div>
+          </motion.div>
         </div>
       </div>
       
